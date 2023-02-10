@@ -120,7 +120,7 @@
 
     .form {
         display: grid;
-        grid-template-columns: calc(100vw - 20px);
+        grid-template-columns: 1fr;
         grid-template-rows: 79px 106px;
         grid-template-areas:
         "input"
