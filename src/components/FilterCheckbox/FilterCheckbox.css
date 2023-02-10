@@ -26,10 +26,10 @@
     z-index: 1;
 }
 
-.switch-on {
+.form__button_on {
     background: #2BE080;
 }
 
-.switch-on::after {
+.form__button_on::after {
     left: 17px;
 }

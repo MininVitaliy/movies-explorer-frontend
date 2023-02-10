@@ -13,7 +13,7 @@ function Movies({isShortFilms, setIsShortFilms, isSearch}) {
     }, 1500)
   }
   return (
-    <>
+    <main className="content">
       <SearchForm
         shortFilms={isShortFilms}
         onClick={setIsShortFilms}
@@ -24,7 +24,7 @@ function Movies({isShortFilms, setIsShortFilms, isSearch}) {
         :
         <Preloader />
       }
-    </>
+    </main>
   )
 }
 

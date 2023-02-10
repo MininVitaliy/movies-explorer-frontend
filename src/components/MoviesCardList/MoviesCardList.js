@@ -5,7 +5,6 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 function MoviesCardList () {
   const currentUser = useContext(CurrenUserContext);
   return (
-    <main className="content">
       <section className="element">
         <ul className="element__lists">
           <MoviesCard />
@@ -15,7 +14,6 @@ function MoviesCardList () {
           <MoviesCard />
         </ul>
       </section>
-    </main>
   )
 }
 

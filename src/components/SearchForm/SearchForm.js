@@ -14,7 +14,7 @@ function SearchForm({shortFilms, onClick, isSearch}) {
           {isSearch ?
             <>
               <img src={magnifier} className="form__logo" alt="Поиск"/>
-              <input type="text" placeholder="Фильм" name="form-search" className="form__input"
+              <input type="text" placeholder="Фильм" name="form-search" required className="form__input"
                 /*required minLength="2" maxLength="40" onChange={handleChangeName} value={name || ''}*//>
               <button type="submit" aria-label="Отправить запрос" className="form__submit"
                 /*onClick={() => onClose(name)}*/>
@@ -24,7 +24,7 @@ function SearchForm({shortFilms, onClick, isSearch}) {
             :
             <>
               <div className="form__mobile">
-                <input type="text" placeholder="Фильм" name="form-search" className="form__input"
+                <input type="text" placeholder="Фильм" name="form-search" required className="form__input"
                   /*required minLength="2" maxLength="40" onChange={handleChangeName} value={name || ''}*//>
                 <button type="submit" aria-label="Отправить запрос" className="form__submit"
                   /*onClick={() => onClose(name)}*/>
