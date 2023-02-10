@@ -1,7 +1,6 @@
 import React from 'react';
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
-import main from "../Main/Main";
 
 function SaveMovies({isShortFilms, setIsShortFilms, isSearch}) {
   return (

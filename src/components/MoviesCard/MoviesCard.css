@@ -99,6 +99,7 @@
 @media screen and (max-width: 900px) {
     .element__list {
         max-width: none;
+        display: inherit;
     }
 
     .element__img {

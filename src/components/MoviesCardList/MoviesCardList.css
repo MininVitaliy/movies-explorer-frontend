@@ -12,13 +12,12 @@
     grid-row-gap: 30px;
 }
 
-@media screen and (max-width: 1283px) {
-
-}
-
 @media screen and (max-width: 900px) {
     .element {
-        margin: 70px 30px 30px;
+        margin-right: auto;
+        margin-left: auto;
+        display: flex;
+        justify-content: center;
     }
 
     .element__lists {
@@ -41,7 +40,5 @@
 @media screen and (max-width: 460px) {
     .element {
         margin-top: 40px;
-        margin-left: 10px;
-        margin-right: 10px;
     }
 }
