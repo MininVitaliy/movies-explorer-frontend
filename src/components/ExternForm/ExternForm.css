@@ -1,0 +1,165 @@
+.register {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.register__form {
+    max-width: 396px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.register__title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 40px 0 40px;
+}
+
+.register__logo {
+    margin: 0;
+}
+
+.register__text {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: #A0A0A0;
+    margin: 0;
+}
+
+.register__input {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 0;
+    height: 32px;
+    border: none;
+    border-bottom: 1px solid #E8E8E8;
+    outline: none
+}
+
+.register__input:focus {
+    outline: dashed skyblue;
+}
+
+.register__input_valid {
+    border-bottom: 1px solid #2BE080;
+}
+
+.register__input_invalid {
+    border-bottom: 1px solid #EE3465;
+}
+
+.register__span {
+    margin: 6px 0 6px;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+}
+
+.register__span_valid {
+    margin-top: 18px;
+}
+
+.register__span_invalid {
+    color: #EE3465;
+}
+
+.register__span_two-lines {
+    margin: 0;
+}
+.register__save {
+    margin: 127px 0 3px;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    border: none;
+    color: #FFFFFF;
+    min-height: 45px;
+    transition: opacity  .3s linear;
+}
+
+.register__save_valid {
+    background: #2BE080;
+    cursor: pointer;
+}
+
+.register__save_valid:hover {
+    opacity: .4;
+}
+
+.register__save_invalid {
+    background: #b6b6b6;
+}
+
+.register__info {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #A0A0A0;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.register__link {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #2BE080;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 570px) {
+    .register {
+        position: inherit;
+        margin-top: 56px;
+    }
+
+    .register__logo {
+        margin: 0 auto;
+    }
+
+    .register__title {
+        margin: 50px auto 80px;
+    }
+
+    .register__form {
+        max-width: 260px;
+        justify-content: flex-start;
+    }
+
+    .register__save {
+        font-size: 12px;
+        line-height: 15px;
+        position: fixed;
+        bottom: 59px;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        max-width: 260px;
+    }
+
+    .register__info {
+        font-size: 12px;
+        line-height: 15px;
+        position: fixed;
+        bottom: 30px;
+        margin: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .register__link {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

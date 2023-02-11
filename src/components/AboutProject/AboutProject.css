@@ -1,0 +1,120 @@
+.project {
+    padding: 110px 70px 105px;
+}
+
+.project__block {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 40px;
+}
+
+.project__title {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    margin: 70px 0 26px;
+}
+
+.project__text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+}
+
+.project__chart {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: repeat(2, 36px);
+    margin-top: 110px;
+}
+
+.project__signatures {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project__signatures_background_green {
+    background: #2BE080;
+}
+
+.project__signatures_background_gray {
+    background: #F2F2F2;
+}
+
+.project__signatures_color {
+    color: #A0A0A0;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 900px) {
+    .project {
+        padding: 90px 50px;
+    }
+
+    .project__block {
+        grid-column-gap: 30px;
+    }
+
+    .project__title {
+        margin-bottom: 22px;
+    }
+
+    .project__text {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .project__chart {
+        margin-top: 93px;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .project {
+        padding: 70px 18px;
+    }
+
+    .project__block {
+        display: flex;
+       flex-direction: column;
+    }
+
+    .project__title {
+        font-size: 18px;
+        line-height: 22px;
+        margin-top: 60px;
+        margin-bottom: 16px;
+    }
+
+    .project__title_margin {
+        margin-top: 56px;
+    }
+
+    .project__text {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .project__chart {
+        grid-template-columns: minmax(100px, 1fr) minmax(184px, 2fr);
+        grid-template-rows: 36px 30px;
+        margin-top: 60px;
+    }
+
+    .project__signatures {
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    .project__signatures_color {
+        margin-top: 0;
+    }
+}

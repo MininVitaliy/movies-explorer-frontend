@@ -1,0 +1,222 @@
+.header__logo {
+    margin: 18px 28px 18px 70px;
+    width: 38px;
+    height: 38px;
+    background: url("../../images/logoHeader.svg");
+}
+
+.header__link {
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #000;
+    text-decoration: none;
+    margin-left: 16px;
+}
+
+.header__not-authorized {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-decoration: none;
+    margin-right: 30px;
+}
+
+.header__not-authorized_background {
+    background: #2BE080;
+    border-radius: 3px;
+    min-width: 76px;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__transition {
+    transition: opacity  .3s linear;
+}
+
+.header__transition:hover {
+    opacity: .4;
+}
+
+.header__link_principal {
+    font-weight: 500;
+}
+
+.header__row {
+    display: flex;
+    align-items: center;
+}
+
+.header__area {
+    background: #F9F9F9;
+    border-radius: 20px;
+    width: 100px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    margin-right: 70px;
+    justify-content: center;
+}
+
+.header__area-not-authorized {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 40px;
+}
+
+.header__area_position {
+    margin: 0;
+    position: absolute;
+    bottom: 90px;
+}
+
+.header__profile {
+    text-decoration: none;
+    margin: 0;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 500;
+    color: #000;
+}
+
+.header__image {
+    cursor: pointer;
+    margin: 15px 30px 15px auto;
+    width: 44px;
+    height: 44px;
+    background: url("../../images/icon__COLOR_icon-main.svg");
+}
+
+.header__sidebar {
+    position: fixed;
+    transform: translateX(100%);
+    transition: transform .3s linear;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: #FFFFFF;
+    width: 520px;
+    z-index: 4;
+}
+
+.header__sidebar_open {
+    transform: translateX(0);
+}
+
+.header__sidebar-background {
+    z-index: 1;
+    background: #000000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility .3s, opacity .5s;
+}
+
+.header__sidebar-background_open {
+    opacity: 0.3;
+    visibility: visible;
+}
+
+.header__close {
+    margin: 20px 23px 106px auto;
+    width: 30px;
+    height: 30px;
+    background: url("../../images/Group.svg");
+    padding: 0;
+    border: 0;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+}
+
+.header__close:hover {
+    cursor: pointer;
+}
+
+.header__sidebar-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.header__sidebar-block_justify {
+    justify-content: space-between;
+}
+
+.header__sidebar-link {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-decoration: none;
+    color: #000;
+    margin-bottom: 28px;
+    text-underline-offset: 7px;
+}
+
+.header__sidebar-link:last-of-type {
+    margin-bottom: 0;
+}
+
+.header__sidebar-link:hover {
+    text-decoration: underline;
+}
+
+
+@media screen and (max-width: 900px) {
+    .header__logo {
+        margin-left: 30px;
+    }
+
+    .header__area-not-authorized {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .header__logo {
+        margin-left: 14px;
+    }
+
+    .header__image {
+        margin-right: 14px;
+        width: 40px;
+        height: 43px;
+        background: url("../../images/icon__COLOR_icon-main320.svg");
+    }
+
+    .header__not-authorized {
+        font-size: 10px;
+        margin-right: 14px;
+    }
+
+    .header__not-authorized_background {
+        min-width: 54px;
+        min-height: 26px;
+    }
+
+    .header__sidebar {
+        width: 100vw;
+    }
+
+    .header__close {
+        margin-top: 26px;
+        margin-right: 14px;
+        margin-bottom: 100px;
+    }
+
+    .header__sidebar-link {
+        margin-bottom: 24px;
+    }
+
+    .header__area_position {
+        bottom: 46px;
+    }
+}
