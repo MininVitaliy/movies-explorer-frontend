@@ -1,13 +1,24 @@
 import { useState } from 'react';
 import ExternForm from "../ExternForm/ExternForm";
 
-function Login() {
+function Login({onLogin, onLoading}) {
   const [isValid, setIsValid] = useState(false);
+
+  function onRegisterCall ({email, password}) {
+    onLogin({
+          email: email,
+          password: password,
+        }
+    );
+  }
+
   return (
     <>
       <ExternForm
+          onLoading={onLoading}
         nameTitle='Рады видеть!'
-        text='Войти'
+          buttonStart='Войти'
+          buttonStop='Авторизируюсь...'
         textInfo="Ещё не зарегистрированы? "
         textLink='Регистрация'
         link='/signup'
@@ -15,6 +26,7 @@ function Login() {
         infoName='login-form'
         setIsValid={setIsValid}
         isValid={isValid}
+        onRegisterCall={onRegisterCall}
       />
     </>
   )

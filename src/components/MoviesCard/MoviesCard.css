@@ -48,9 +48,19 @@
     border-radius: 15px;
 }
 
+.element__logo_delete {
+    background-image: url('../../images/delete.svg');
+    transition: opacity .3s linear;
+}
+
 .element__logo_active {
     background-image: url('../../images/save9.svg');
     transition: opacity .3s linear;
+}
+
+.element__logo_delete:hover  {
+    opacity: .6;
+    cursor: pointer;
 }
 
 .element__logo_active:hover {
@@ -68,12 +78,15 @@
     cursor: pointer;
 }
 
-.element__img {
+.element__link {
     max-height: 203px;
     min-height: 203px;
+}
+
+.element__img {
+    object-fit: cover;
     width: 100%;
     height: 100%;
-    object-fit: cover;
     background-position: center center;
 }
 
@@ -86,7 +99,7 @@
         grid-template-columns: calc((100vw - 140px - 24px - 24px - 58px - 58px - 58px) / 3) 58px;
     }
 
-    .element__img {
+    .element__link {
         max-height: calc((100vw - 140px - 24px - 24px) / 5.3793);
         min-height: calc((100vw - 140px - 24px - 24px) / 5.3793);
     }
@@ -98,11 +111,10 @@
 
 @media screen and (max-width: 900px) {
     .element__list {
-        max-width: none;
-        display: inherit;
+        max-width: calc((100vw - 60px - 30px) / 2);
     }
 
-    .element__img {
+    .element__link {
         max-height: calc((100vw - 60px - 30px) / 3.5684);
         min-height: calc((100vw - 60px - 30px) / 3.5684);
     }
@@ -117,7 +129,11 @@
 }
 
 @media screen and (max-width: 560px) {
-    .element__img {
+    .element__list {
+        max-width: calc(100vw - 60px);
+    }
+
+    .element__link {
         max-height: calc((100vw - 60px) / 1.7857);
         min-height: calc((100vw - 60px) / 1.7857);
     }
@@ -132,9 +148,13 @@
 }
 
 @media screen and (max-width: 460px) {
-    .element__img {
+    .element__link {
         max-height: calc((100vw - 20px) / 1.7857);
         min-height: calc((100vw - 20px) / 1.7857);
+    }
+
+    .element__list {
+        max-width: calc(100vw - 20px);
     }
 
     .element__area {

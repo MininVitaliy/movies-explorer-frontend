@@ -1,7 +1,6 @@
 import React from "react";
 
 export const CurrenUserContext = React.createContext();
-export const CurrenCardContext = React.createContext();
 
 export function inputValid (info) {
   if (info.length === 0) {
