@@ -32,3 +32,5 @@
 Прикладываю ссылку куда загружен сегенерированый макет проекта: https://disk.yandex.ru/d/9jKOTZtAoT550Q
 
 Прикладываю ссылку на домен гре работает фронтенд: https://diploma.mininvitali.nomor.nomoredomains.work
+
+Прикладываю ссылку на пул реквест: https://github.com/MininVitaliy/movies-explorer-frontend/pull/2
