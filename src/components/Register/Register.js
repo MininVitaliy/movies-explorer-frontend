@@ -17,26 +17,27 @@ function Register({onRegister, onLoading}) {
   }
 
   function onRegisterCall ({email, password}, {emailStart, passwordStart}) {
-    onRegister({
-          name: name,
-          email: email,
-          password: password,
-        },
-        {
-          nameStart: setName,
-          emailStart: emailStart,
-          passwordStart: passwordStart
-        }
+    onRegister(
+      {
+      name: name,
+      email: email,
+      password: password,
+      },
+      {
+        nameStart: setName,
+        emailStart: emailStart,
+        passwordStart: passwordStart
+      }
     );
   }
 
   return (
       <>
         <ExternForm
-            onLoading={onLoading}
-            nameTitle='Добро пожаловать!'
-            buttonStart='Зарегистрироваться'
-            buttonStop='Регестрируюсь...'
+          onLoading={onLoading}
+          nameTitle='Добро пожаловать!'
+          buttonStart='Зарегистрироваться'
+          buttonStop='Регестрируюсь...'
           textInfo="Уже зарегистрированы? "
           textLink='Войти'
           link='/signin'
@@ -49,7 +50,6 @@ function Register({onRegister, onLoading}) {
               <p className='register__text'>Имя</p>
               <input type="text" name="popup__span_text" className={isValidName}
                 required minLength="5" maxLength="200" onChange={handleChangeName} value={name || ''}
-
               />
               <span className={isValidInfoName.clasInfo()}>{isValidInfoName.name}</span>  
             </>

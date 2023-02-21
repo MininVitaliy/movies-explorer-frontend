@@ -9,8 +9,7 @@ function MoviesCard({nameMovie,
                       deleteCardMovies,
                       id,
                       addNewCardMovies,
-                      isMoviesSaveMe,
-                    }) {
+                      isMoviesSaveMe }) {
 
   const [isLiked, setIsLiked] = useState(false);
   const [durationTime, setDurationTime] =useState('');
@@ -82,17 +81,17 @@ function MoviesCard({nameMovie,
         <p className="element__text">{nameMovie}</p>
         <time className="element__time" dateTime={durationTimeCar}>{durationTime}</time>
         {isEditingCards ?
-            <button type="button" aria-label="Знак о добавлении в избранное" onClick={onCardLike} className={
-                `element__logo ` + (isLiked ? 'element__logo_active' : 'element__logo_not-active')}>
-            </button>
-            :
-            <button type="button" aria-label="Знак о удалении из избранного" onClick={onCardLike}
-                    className="element__logo element__logo_delete">
-            </button>
+          <button type="button" aria-label="Знак о добавлении в избранное" onClick={onCardLike} className={
+            `element__logo ` + (isLiked ? 'element__logo_active' : 'element__logo_not-active')}>
+          </button>
+          :
+          <button type="button" aria-label="Знак о удалении из избранного" onClick={onCardLike}
+            className="element__logo element__logo_delete">
+          </button>
         }
       </div>
       <a href={trailerLink} className="element__link header__transition" target="_blank">
-         <img src={isImgMovie} className="element__img" alt="Баннер фильма"/>
+        <img src={isImgMovie} className="element__img" alt="Баннер фильма"/>
       </a>
     </li>
   )

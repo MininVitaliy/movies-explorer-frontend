@@ -130,16 +130,15 @@ function App() {
           nameStart('');
           emailStart('');
           passwordStart('');
-          history.push('/signin');
         })
         .then(() => {
-          openInfoPopup (false,  'Вы успешно зарегестрировались!');
+          authorizationUser({email, password});
         })
         .catch((err) => {
           console.log(err);
           openInfoPopup (true, 'Во время запроса произошла ошибка. ' +
-              'Возможно, проблема с соединением или сервер недоступен. ' +
-              'Подождите немного и попробуйте ещё раз');
+            'Возможно, проблема с соединением или сервер недоступен. ' +
+            'Подождите немного и попробуйте ещё раз');
         })
         .finally(() => {
           setLoading(true);
@@ -149,7 +148,6 @@ function App() {
 
   const authorizationUser = useCallback( ({email, password}) => {
     setLoading(false);
-    setIsLoading(true);
     authorize ({email, password})
         .then ((res) => {
           handleLogin();
@@ -170,6 +168,7 @@ function App() {
   const checkToken = useCallback(() => {
     const token = localStorage.getItem('token');
     if (token){
+      setIsLoading(true);
       getContentUser(token)
           .then((res) => {
             setCurrentUser(res)
@@ -179,7 +178,7 @@ function App() {
             }
           })
           .finally(() => {
-            setIsLoading(false)
+            setIsLoading(false);
           });
     }
   }, []);
@@ -194,8 +193,8 @@ function App() {
         .catch((err) => {
           console.log(err)
           openInfoPopup (true, 'Во время запроса произошла ошибка. ' +
-              'Возможно, проблема с соединением или сервер недоступен. ' +
-              'Подождите немного и попробуйте ещё раз');
+            'Возможно, проблема с соединением или сервер недоступен. ' +
+            'Подождите немного и попробуйте ещё раз');
         })
         .finally(() => {
           setLoading(true);
@@ -203,19 +202,19 @@ function App() {
   }, []);
 
   function closeSidebar () {
-    setSidebar(false)
+    setSidebar(false);
   }
 
   const mobileWindow = useCallback( () => {
     if (width > 900) {
-      setIsMobile(true)
-      setSidebar(false)
+      setIsMobile(true);
+      setSidebar(false);
     } else if (width > 560) {
-      setIsSearch(true)
-      setIsMobile(false)
+      setIsSearch(true);
+      setIsMobile(false);
     } else {
-      setIsMobile(false)
-      setIsSearch(false)
+      setIsMobile(false);
+      setIsSearch(false);
     }
   }, [width]);
 
@@ -310,8 +309,8 @@ function App() {
         .catch(err => {
           console.log(err);
           openInfoPopup (true, 'Во время запроса произошла ошибка. ' +
-              'Возможно, проблема с соединением или сервер недоступен. ' +
-              'Подождите немного и попробуйте ещё раз');
+            'Возможно, проблема с соединением или сервер недоступен. ' +
+            'Подождите немного и попробуйте ещё раз');
         })
         .finally(() => {
           setLoadingMe(true);
@@ -332,8 +331,8 @@ function App() {
         .catch(err => {
           console.log(err)
           openInfoPopup (true, 'Во время запроса произошла ошибка. ' +
-              'Возможно, проблема с соединением или сервер недоступен. ' +
-              'Подождите немного и попробуйте ещё раз');
+            'Возможно, проблема с соединением или сервер недоступен. ' +
+            'Подождите немного и попробуйте ещё раз');
         })
   }, [isMoviesSaveMe]);
 
@@ -346,8 +345,8 @@ function App() {
         .catch(err => {
           console.log(err);
           openInfoPopup (true, 'Во время запроса произошла ошибка. ' +
-              'Возможно, проблема с соединением или сервер недоступен. ' +
-              'Подождите немного и попробуйте ещё раз');
+            'Возможно, проблема с соединением или сервер недоступен. ' +
+            'Подождите немного и попробуйте ещё раз');
         })
   }, []);
 
@@ -364,70 +363,69 @@ function App() {
           {location.pathname === '/' ||
           location.pathname === '/movies' ||
           location.pathname === '/saved-movies' ||
-          location.pathname === '/profile'
-              ?
-              <Header
-                  registered={loggedIn}
-                  isMobile={isMobile}
-                  openSidebar={openSidebar}
-                  sidebar={sidebar}
-                  closeSidebar={closeSidebar}
-              />
-              :
-              ''
+          location.pathname === '/profile' ?
+            <Header
+              registered={loggedIn}
+              isMobile={isMobile}
+              openSidebar={openSidebar}
+              sidebar={sidebar}
+              closeSidebar={closeSidebar}
+            />
+            :
+            ''
           }
           <Switch>
             <ProtectedRoute path="/movies"
-                            component={Movies}
-                            loggedIn={loggedIn}
-                            isSearch={isSearch}
-                            onOpenPopup={openInfoPopup}
-                            getMovies={getInitialMovies}
-                            cards={isMovieRoute}
-                            loading={loading}
-                            searchResult={searchResult}
-                            location={location}
-                            isAdditionalMovies={isAdditionalMovies}
-                            moreBlockOnClick={moreBlockOnClick}
-                            addNewCardMovies={addNewCardMovies}
-                            deleteCardMovies={deleteCardMovies}
-                            isMoviesSaveMe={isMoviesSaveMe}
-                            isLoading={isLoading}
+              component={Movies}
+              loggedIn={loggedIn}
+              isSearch={isSearch}
+              onOpenPopup={openInfoPopup}
+              getMovies={getInitialMovies}
+              cards={isMovieRoute}
+              loading={loading}
+              searchResult={searchResult}
+              location={location}
+              isAdditionalMovies={isAdditionalMovies}
+              moreBlockOnClick={moreBlockOnClick}
+              addNewCardMovies={addNewCardMovies}
+              deleteCardMovies={deleteCardMovies}
+              isMoviesSaveMe={isMoviesSaveMe}
+              isLoading={isLoading}
             />
 
             <ProtectedRoute path="/profile"
-                            component={Profile}
-                            loggedIn={loggedIn}
-                            handleUpdateUser={handleUpdateUser}
-                            onLoading={loading}
-                            exit={exit}
-                            isLoading={isLoading}
+              component={Profile}
+              loggedIn={loggedIn}
+              handleUpdateUser={handleUpdateUser}
+              onLoading={loading}
+              exit={exit}
+              isLoading={isLoading}
             />
 
             <ProtectedRoute path="/saved-movies"
-                            component={SaveMovies}
-                            loggedIn={loggedIn}
-                            location={location}
-                            isSearch={isSearch}
-                            isMoviesSaveMe={isMoviesSaveMe}
-                            loading={loadingMe}
-                            searchResult={searchResultMe}
-                            deleteCardMovies={deleteCardMovies}
-                            setSearchResultMeToggle={setSearchResultMeToggle}
-                            isMoviesDelete={isMoviesDelete}
-                            isLoading={isLoading}
+              component={SaveMovies}
+              loggedIn={loggedIn}
+              location={location}
+              isSearch={isSearch}
+              isMoviesSaveMe={isMoviesSaveMe}
+              loading={loadingMe}
+              searchResult={searchResultMe}
+              deleteCardMovies={deleteCardMovies}
+              setSearchResultMeToggle={setSearchResultMeToggle}
+              isMoviesDelete={isMoviesDelete}
+              isLoading={isLoading}
             />
 
             <Route path="/signup">
               <Register
-                  onRegister={registrationUser}
-                  onLoading={loading}
+                onRegister={registrationUser}
+                onLoading={loading}
               />
             </Route>
             <Route path="/signin">
               <Login
-                  onLogin={authorizationUser}
-                  onLoading={loading}
+                onLogin={authorizationUser}
+                onLoading={loading}
               />
             </Route>
             <Route path="/404">
@@ -442,10 +440,9 @@ function App() {
               {loggedIn ? <Redirect to="/" /> : <Redirect to="/404" />}
             </Route>
           </Switch>
-
           {location.pathname === '/' ||
-            location.pathname === '/movies' ||
-            location.pathname === '/saved-movies' ?
+          location.pathname === '/movies' ||
+          location.pathname === '/saved-movies' ?
               <Footer />
               :
               ''

@@ -14,8 +14,8 @@ function ExternForm ({infoName,
                        isValid,
                        setIsValid,
                        onRegisterCall,
-                       onLoading
-}) {
+                       onLoading}) {
+                        
   const [isValidEmail, setIsValidEmail] = useState( () => classValidRegister (null));
   const [isValidInfoEmail, setIsValidInfoEmail] = useState({name: '', clasInfo: () => inputValid ('')});
   const [isValidPassword, setIsValidPassword] = useState(() => classValidRegister (null));

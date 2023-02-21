@@ -10,8 +10,7 @@ function SaveMovies({isSearch,
                       searchResult,
                       deleteCardMovies,
                       setSearchResultMeToggle,
-                      isMoviesDelete
-                    }) {
+                      isMoviesDelete }) {
 
   const [searchMovies, setSearchMovies] = useState(true);
   const [searchNewMovies, setSearchNewMovies] = useState([]);
@@ -60,15 +59,15 @@ function SaveMovies({isSearch,
 
       />
       <MoviesCardList
-          location={location}
-          loading={loading}
-          searchResult={searchResult}
-          cards={isMoviesSaveMe}
-          isMoviesSaveMe={isMoviesSaveMe}
-          deleteCardMovies={deleteCardMovies}
-          isMoviesDelete={isMoviesDelete}
-          searchMovies={searchMovies}
-          searchNewMovies={searchNewMovies}
+        location={location}
+        loading={loading}
+        searchResult={searchResult}
+        cards={isMoviesSaveMe}
+        isMoviesSaveMe={isMoviesSaveMe}
+        deleteCardMovies={deleteCardMovies}
+        isMoviesDelete={isMoviesDelete}
+        searchMovies={searchMovies}
+        searchNewMovies={searchNewMovies}
       />
       <div className='content__empty-block'></div>
     </main>

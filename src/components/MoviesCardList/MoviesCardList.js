@@ -10,8 +10,7 @@ function MoviesCardList ({cards,
                            addNewCardMovies,
                            isMoviesSaveMe,
                            searchMovies,
-                           searchNewMovies,
-                         }) {
+                           searchNewMovies }) {
 
   const [isEditingCards, setIsEditingCards] =useState(true);
 
@@ -28,49 +27,49 @@ function MoviesCardList ({cards,
         {loading ?
             <>
               {searchResult ?
-                        <>
-                          {searchMovies ?
-                              <>
-                                <ul className="element__lists">
-                                  {cards.map((item) =>
-                                      <MoviesCard
-                                          key={item.id || item._id}
-                                          nameMovie={item.nameRU}
-                                          duration={item.duration}
-                                          imgMovie={item.image.url || item.image}
-                                          trailerLink={item.trailerLink}
-                                          isEditingCards={isEditingCards}
-                                          deleteCardMovies={deleteCardMovies}
-                                          id={item}
-                                          addNewCardMovies={addNewCardMovies}
-                                          isMoviesSaveMe={isMoviesSaveMe}
-                                      />
-                                  )}
-                                </ul>
-                              </>
-                              :
-                              <>
-                                <ul className="element__lists">
-                                  {searchNewMovies.map((item) =>
-                                      <MoviesCard
-                                          key={item.id || item._id}
-                                          nameMovie={item.nameRU}
-                                          duration={item.duration}
-                                          imgMovie={item.image.url || item.image}
-                                          trailerLink={item.trailerLink}
-                                          isEditingCards={isEditingCards}
-                                          deleteCardMovies={deleteCardMovies}
-                                          id={item}
-                                          addNewCardMovies={addNewCardMovies}
-                                          isMoviesSaveMe={isMoviesSaveMe}
-                                      />
-                                  )}
-                                </ul>
-                              </>
-                          }
-                        </>
-                        :
-                        <p className="element__info">Ничего не найдено</p>
+                <>
+                  {searchMovies ?
+                    <>
+                      <ul className="element__lists">
+                        {cards.map((item) =>
+                          <MoviesCard
+                            key={item.id || item._id}
+                            nameMovie={item.nameRU}
+                            duration={item.duration}
+                            imgMovie={item.image.url || item.image}
+                            trailerLink={item.trailerLink}
+                            isEditingCards={isEditingCards}
+                            deleteCardMovies={deleteCardMovies}
+                            id={item}
+                            addNewCardMovies={addNewCardMovies}
+                            isMoviesSaveMe={isMoviesSaveMe}
+                          />
+                        )}
+                      </ul>
+                    </>
+                    :
+                    <>
+                      <ul className="element__lists">
+                        {searchNewMovies.map((item) =>
+                          <MoviesCard
+                            key={item.id || item._id}
+                            nameMovie={item.nameRU}
+                            duration={item.duration}
+                            imgMovie={item.image.url || item.image}
+                            trailerLink={item.trailerLink}
+                            isEditingCards={isEditingCards}
+                            deleteCardMovies={deleteCardMovies}
+                            id={item}
+                            addNewCardMovies={addNewCardMovies}
+                            isMoviesSaveMe={isMoviesSaveMe}
+                          />
+                        )}
+                      </ul>
+                    </>
+                  }
+                </>
+                :
+                <p className="element__info">Ничего не найдено</p>
               }
             </>
             :

@@ -14,8 +14,7 @@ function Movies({isSearch,
                   location,
                   addNewCardMovies,
                   deleteCardMovies,
-                  isMoviesSaveMe,
-                }) {
+                  isMoviesSaveMe }) {
 
   const [searchMovies, setSearchMovies] = useState(true)
 
@@ -34,19 +33,18 @@ function Movies({isSearch,
         handleSubmitMovie={handleSubmitMovie}
       />
       <MoviesCardList
-          cards={cards}
-          loading={loading}
-          searchResult={searchResult}
-          location={location}
-          addNewCardMovies={addNewCardMovies}
-          deleteCardMovies={deleteCardMovies}
-          searchMovies={searchMovies}
-          isMoviesSaveMe={isMoviesSaveMe}
-
+        cards={cards}
+        loading={loading}
+        searchResult={searchResult}
+        location={location}
+        addNewCardMovies={addNewCardMovies}
+        deleteCardMovies={deleteCardMovies}
+        searchMovies={searchMovies}
+        isMoviesSaveMe={isMoviesSaveMe}
       />
       <MoreBlocks
-          moreBlockOnClick={moreBlockOnClick}
-          isAdditionalMovies={isAdditionalMovies}
+        moreBlockOnClick={moreBlockOnClick}
+        isAdditionalMovies={isAdditionalMovies}
       />
     </main>
   )

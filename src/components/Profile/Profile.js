@@ -24,7 +24,8 @@ function Profile({handleUpdateUser, onLoading, exit}) {
     setEmail(e.target.value)
     setIsValidEmail(() => classValidProfile (e.target.validity.valid));
     setIsValidInfoEmail( {name: e.target.validationMessage, clasInfo: () =>
-          inputValidProfile (e.target.validationMessage)});
+      inputValidProfile (e.target.validationMessage)
+    });
     setIsValid(e.target.closest('form').checkValidity());
   }
 
@@ -32,7 +33,8 @@ function Profile({handleUpdateUser, onLoading, exit}) {
     setName(e.target.value)
     setIsValidName(() => classValidProfile (e.target.validity.valid));
     setIsValidInfoName( {name: e.target.validationMessage, clasInfo: () =>
-          inputValidProfile (e.target.validationMessage)});
+      inputValidProfile (e.target.validationMessage)
+    });
     setIsValid(e.target.closest('form').checkValidity());
   }
 

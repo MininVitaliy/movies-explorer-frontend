@@ -6,19 +6,18 @@ function Login({onLogin, onLoading}) {
 
   function onRegisterCall ({email, password}) {
     onLogin({
-          email: email,
-          password: password,
-        }
-    );
+      email: email,
+      password: password,  
+    });
   }
 
   return (
     <>
       <ExternForm
-          onLoading={onLoading}
+        onLoading={onLoading}
         nameTitle='Рады видеть!'
-          buttonStart='Войти'
-          buttonStop='Авторизируюсь...'
+        buttonStart='Войти'
+        buttonStop='Авторизируюсь...'
         textInfo="Ещё не зарегистрированы? "
         textLink='Регистрация'
         link='/signup'
