@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-function Navigation({registered, isMobile, openSidebar, sidebar, closeSidebar, children}) {
+function Navigation({registered, isMobile, openSidebar, sidebar, closeSidebar}) {
   return (
     <>
       <div className="header__row">

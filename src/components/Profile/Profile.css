@@ -119,8 +119,14 @@
     font-size: 13px;
     line-height: 16px;
     color: #EE3465;
-    text-align: center;
-    text-decoration: none;
+    background: none;
+    border: none;
+    width: fit-content;
+    margin: auto;
+}
+
+.profile__link {
+    cursor: pointer;
 }
 
 

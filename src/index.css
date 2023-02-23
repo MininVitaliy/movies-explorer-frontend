@@ -67,3 +67,6 @@
 
 /*Movies*/
 @import url(./components/Movies/Movies.css);
+
+/*InfoToolTip*/
+@import url(./components/InfoToolTip/InfoToolTip.css);
