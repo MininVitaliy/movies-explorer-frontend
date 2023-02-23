@@ -136,9 +136,15 @@ function App() {
         })
         .catch((err) => {
           console.log(err);
-          openInfoPopup (true, 'Во время запроса произошла ошибка. ' +
-            'Возможно, проблема с соединением или сервер недоступен. ' +
-            'Подождите немного и попробуйте ещё раз');
+          if (err === 'Ошибка: 409') {
+            openInfoPopup (true, 'Во время запроса произошла ошибка. ' +
+                'Пользователь с таким email уже существует. ' +
+                'Укажите другой email и попробуйте еще раз.')
+          } else {
+            openInfoPopup(true, 'Во время запроса произошла ошибка. ' +
+                'Возможно, проблема с соединением или сервер недоступен. ' +
+                'Подождите немного и попробуйте ещё раз');
+          }
         })
         .finally(() => {
           setLoading(true);
@@ -149,7 +155,7 @@ function App() {
   const authorizationUser = useCallback( ({email, password}) => {
     setLoading(false);
     authorize ({email, password})
-        .then ((res) => {
+        .then (() => {
           handleLogin();
           checkToken();
           setIsAdditionalMovies(false);
@@ -174,14 +180,29 @@ function App() {
             setCurrentUser(res)
             if (res){
               handleLogin();
-              history.push('/movies');
+              goingToSpecificPageOfTheSite ()
             }
+          })
+          .then (() => {
+            getInitialMoviesMe();
           })
           .finally(() => {
             setIsLoading(false);
           });
     }
   }, []);
+
+  function goingToSpecificPageOfTheSite () {
+    if (location.pathname === "/movies") {
+      history.push('/movies');
+    } else if (location.pathname === "/saved-movies") {
+      history.push("/saved-movies")
+    } else if (location.pathname === "/") {
+      history.push("/")
+    } else if (location.pathname === "/profile") {
+      history.push("/profile")
+    }
+  }
 
   const handleUpdateUser = useCallback (({email, name}) => {
     setLoading(false);
@@ -192,9 +213,15 @@ function App() {
         })
         .catch((err) => {
           console.log(err)
-          openInfoPopup (true, 'Во время запроса произошла ошибка. ' +
-            'Возможно, проблема с соединением или сервер недоступен. ' +
-            'Подождите немного и попробуйте ещё раз');
+          if (err === 'Ошибка: 409') {
+            openInfoPopup (true, 'Во время запроса произошла ошибка. ' +
+                'Пользователь с таким email уже существует. ' +
+                'Укажите другой email и попробуйте еще раз.')
+          } else {
+            openInfoPopup(true, 'Во время запроса произошла ошибка. ' +
+                'Возможно, проблема с соединением или сервер недоступен. ' +
+                'Подождите немного и попробуйте ещё раз');
+          }
         })
         .finally(() => {
           setLoading(true);
@@ -248,7 +275,6 @@ function App() {
   useEffect (() => {
     if (loggedIn === true) {
       setLoadingMe(false);
-      getInitialMoviesMe();
     }
   }, []);
 
@@ -415,18 +441,23 @@ function App() {
               isMoviesDelete={isMoviesDelete}
               isLoading={isLoading}
             />
-
             <Route path="/signup">
-              <Register
-                onRegister={registrationUser}
-                onLoading={loading}
-              />
+              {loggedIn ?
+                <Redirect to="/movies" />
+                :
+                <Register
+                  onRegister={registrationUser}
+                  onLoading={loading}
+                />}
             </Route>
             <Route path="/signin">
-              <Login
-                onLogin={authorizationUser}
-                onLoading={loading}
-              />
+              {loggedIn ?
+                <Redirect to="/movies" />
+                :
+                <Login
+                  onLogin={authorizationUser}
+                  onLoading={loading}
+                />}
             </Route>
             <Route path="/404">
               <Result404/>

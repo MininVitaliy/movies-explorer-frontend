@@ -45,7 +45,7 @@ function SearchForm({ isSearch,
     if (location.pathname === "/movies" ) {
       setIsEditingCards(true)
     } else if (location.pathname === "/saved-movies") {
-      setIsEditingCards(false)
+      setIsEditingCards(false);
     }
   }, [location]);
 

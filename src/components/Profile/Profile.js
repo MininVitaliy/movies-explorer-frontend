@@ -1,6 +1,7 @@
 import {useState, useContext, useEffect} from "react";
 import { inputValidProfile, classValidProfile } from '../../contexts/CurrentUserContext';
 import { CurrenUserContext } from '../../contexts/CurrentUserContext';
+import isEmail from 'validator/es/lib/isEmail';
 
 function Profile({handleUpdateUser, onLoading, exit}) {
   const [ isValid, setIsValid ] = useState(false);
@@ -12,21 +13,35 @@ function Profile({handleUpdateUser, onLoading, exit}) {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const currentUser = useContext(CurrenUserContext);
+  const [nameUserProfile, setNameUserProfile] = useState('')
 
 
   useEffect (() => {
     setEmail(currentUser.user.email);
     setName(currentUser.user.name);
+    setNameUserProfile(currentUser.user.name);
     setIsValid(true)
   }, [currentUser])
 
   function handleChangeEmail(e) {
     setEmail(e.target.value)
-    setIsValidEmail(() => classValidProfile (e.target.validity.valid));
     setIsValidInfoEmail( {name: e.target.validationMessage, clasInfo: () =>
       inputValidProfile (e.target.validationMessage)
     });
     setIsValid(e.target.closest('form').checkValidity());
+
+    if (isEmail(e.target.value)) {
+      setIsValidEmail(() => classValidProfile (true));
+    } else {
+      setIsValidEmail(() => classValidProfile (false));
+      setIsValid(false);
+      if (e.target.validationMessage.length ===  0) {
+        setIsValidInfoEmail({
+          name: 'Некорректый адрес почты', clasInfo: () =>
+              inputValidProfile('Некорректый адрес почты')
+        });
+      }
+    }
   }
 
   function handleChangeName(e) {
@@ -35,8 +50,18 @@ function Profile({handleUpdateUser, onLoading, exit}) {
     setIsValidInfoName( {name: e.target.validationMessage, clasInfo: () =>
       inputValidProfile (e.target.validationMessage)
     });
-    setIsValid(e.target.closest('form').checkValidity());
+    setIsValid(e.target.closest('form').checkValidity())
   }
+
+  useEffect(() => {
+    if (currentUser.user.email !== email || currentUser.user.name !== name) {
+      if (isValid === true) {
+        setIsValid(true)
+      }
+    } else {
+      setIsValid(false)
+    }
+  }, [handleChangeEmail, handleChangeName]);
 
   function handleSubmit (e) {
     e.preventDefault();
@@ -50,12 +75,12 @@ function Profile({handleUpdateUser, onLoading, exit}) {
   return (
       <form className="profile" name='profile-form' onSubmit={handleSubmit} noValidate>
         <div className="profile__form">
-          <h2 className='profile__title register__title'>Привет, Виталий!</h2>
+          <h2 className='profile__title register__title'>Привет, {nameUserProfile}!</h2>
           <div className='profile__block'>
             <p className='profile__text'>Имя</p>
             <div className='profile__block-error'>
               <input type="text" name="popup__span_text" className={isValidName}
-                     required minLength="5" maxLength="200" onChange={handleChangeName} value={name || ''}/>
+                     required minLength="2" maxLength="30" onChange={handleChangeName} value={name || ''}/>
               <span className={isValidInfoName.clasInfo()}>{isValidInfoName.name}</span>
             </div>
           </div>

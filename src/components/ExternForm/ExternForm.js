@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { inputValid, classValidRegister } from '../../contexts/CurrentUserContext';
+import {inputValid, classValidRegister, inputValidProfile, classValidProfile} from '../../contexts/CurrentUserContext';
 import { Link } from "react-router-dom";
+import isEmail from "validator/es/lib/isEmail";
 
 function ExternForm ({infoName,
                        name,
@@ -25,13 +26,25 @@ function ExternForm ({infoName,
   const [password, setPassword] = useState('');
 
 
-
   function handleChangeEmail(e) {
     setEmail(e.target.value)
-    setIsValidEmail(() => classValidRegister (e.target.validity.valid));
     setIsValidInfoEmail( {name: e.target.validationMessage, clasInfo: () =>
-      inputValid (e.target.validationMessage)});
+          inputValid (e.target.validationMessage)
+    });
     setIsValid(e.target.closest('form').checkValidity());
+
+    if (isEmail(e.target.value)) {
+      setIsValidEmail(() => classValidRegister (true));
+    } else {
+      setIsValidEmail(() => classValidRegister (false));
+      setIsValid(false);
+      if (e.target.validationMessage.length ===  0) {
+        setIsValidInfoEmail({
+          name: 'Некорректый адрес почты', clasInfo: () =>
+              inputValid('Некорректый адрес почты')
+        });
+      }
+    }
   }
 
   function handleChangePassword(e) {
